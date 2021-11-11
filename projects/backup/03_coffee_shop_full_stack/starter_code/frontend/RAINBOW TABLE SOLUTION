@@ -1,0 +1,28 @@
+RAINBOW TABLE SOLUTION
+rainbow_table = {}
+for word in nist_bad:
+    hashed_word = hashlib.md5(word.encode()).hexdigest()
+    rainbow_table[hashed_word] = word
+    
+# Use the Rainbow table to determine the plain text password
+for user in leaked_users_table.keys():
+    try:
+        print(user + ":\t" + rainbow_table[leaked_users_table[user]['md5']])
+    except KeyError:
+        print(user + ":\t" + '******* hash not found in rainbow table')
+
+
+
+https://dev-4ejeflp3.us.auth0.com/authorize?audience=cafe&response_type=token&client_id=K9ST7hWLqvzPb4gLXzuUTHLnLXEqCMIU&redirect_uri=https://127.0.0.1:8080/login-results
+
+
+https://127.0.0.1:8080/login-results#access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im5VdE5pVGRiYklBVmJvbFJmZlZjWSJ9.eyJpc3MiOiJodHRwczovL2Rldi00ZWplZmxwMy51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjE4NzhlODczOGRhZDEwMDZmMmE0YjEzIiwiYXVkIjoiaW1hZ2UiLCJpYXQiOjE2MzY0ODY3MTEsImV4cCI6MTYzNjQ5MzkxMSwiYXpwIjoieFRPTmdCWHJHNDJVTVdkd21ubk5IcVVPYzh0MkNGOVoiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDppbWFnZXMiLCJwb3N0OmltYWdlcyJdfQ.LBPSR9WEIOT1tRat33aat-iMDueWbNAWS7pgfuCZdGfeZSL88TQB6T8gRPXPFeV4UNTTeKv0vuSC5XC7rIbuMG6kfLmYM8ZbSsvS79CTTSwChzG5Clad-Yu8YUyCKhezzU7-Nof9RUI8rydc7qBaDtjQv2xFOwVglbQkM7UGZwRsnE9iq102XCSejo6zMxgL4FmVlUgm222PEIYulqd3RKifMGi28pBwLsC5oPfD_YYCFfk_ORITnzLj1RHGX8A31p6AhJoxCZ1FHmpHZeaJAQAcLF-RjoL4m5-vBt52Af1QZhIMqjkOr_sQuGPYOXVsNRBUzGD0nvk5xvBCCyAn-A&expires_in=7200&token_type=Bearer
+
+
+https://127.0.0.1:8080/login-results#access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im5VdE5pVGRiYklBVmJvbFJmZlZjWSJ9.eyJpc3MiOiJodHRwczovL2Rldi00ZWplZmxwMy51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjE4NzhlODczOGRhZDEwMDZmMmE0YjEzIiwiYXVkIjoiY2FmZSIsImlhdCI6MTYzNjY1MjUwNSwiZXhwIjoxNjM2NjU5NzA1LCJhenAiOiJLOVNUN2hXTHF2elBiNGdMWHp1VVRITG5MWEVxQ01JVSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOltdfQ.I4toux0JRqVcC0VpbeNmYbau9Pg_p0DodftVrWoRXBZ_1ajwr3h-jIcBducgpxDEWYnbuoyxmm9S6UaYrqsN9M3YGMIcuzQUL314AW0WbrFbJmyhLcrGuPm3vXzhMaUQsk3lzIrQAAOurkyODt_TkkdJeA4T0Czwd-EivJpbDu7HJCqTHd39YNR-HZUZ4dCoCbPvbdD4QchXyCid9f6U-56h1NOWTiiQ_zBlqYEyXkEAwczrTJYc-r_DTxxq8VVYsS4tH7EoXOnxVcv2jXuazSUmFWyH-U4OBsQ4t2HipFLxIqkqS3I362tcWs1J5SC23L4d2xsYyr14vcsZ-xOnHQ&expires_in=7200&token_type=Bearer
+
+
+curl -X POST -H "Content-Type: application/json" -d "{title:'tea', receipe:'[{"name": "name1", "color": "color1", "parts": 2}]'}" http://127.0.0.1:5000/drinks
+
+
+curl -X POST -H "Content-Type: application/json" -d "{\"searchTerm\":\"title\"}" http://127.0.0.1:5000/questions/search

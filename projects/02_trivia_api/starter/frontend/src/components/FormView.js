@@ -19,6 +19,10 @@ class FormView extends Component {
     $.ajax({
       url: `/categories`, //TODO: update request URL
       type: "GET",
+      // xhrFields: {
+      //   withCredentials: true
+      // },
+      crossDomain: true,
       success: (result) => {
         this.setState({ categories: result.categories })
         return;
@@ -34,7 +38,8 @@ class FormView extends Component {
   submitQuestion = (event) => {
     event.preventDefault();
     $.ajax({
-      url: '/questions', //TODO: update request URL
+      // url: '/questions', //TODO: update request URL
+      url: '/questions/add', //TODO: update request URL
       type: "POST",
       dataType: 'json',
       contentType: 'application/json',
@@ -49,11 +54,17 @@ class FormView extends Component {
       },
       crossDomain: true,
       success: (result) => {
+        //Need correction once one value is entered box is empty but 
+        // if we press submit same value getting added
+        if(this.state.question == "" || this.state.answer == "")
+        {
+          alert('Enter valid values')
+        }
         document.getElementById("add-question-form").reset();
         return;
       },
       error: (error) => {
-        alert('Unable to add question. Please try your request again')
+            alert('Unable to add question. Please try your request again')
         return;
       }
     })
@@ -64,6 +75,7 @@ class FormView extends Component {
   }
 
   render() {
+
     return (
       <div id="add-form">
         <h2>Add a New Trivia Question</h2>

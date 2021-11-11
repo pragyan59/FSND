@@ -87,16 +87,121 @@ GET ...
 POST ...
 DELETE ...
 
-GET '/api/v1.0/categories'
+GET '/categories'
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
 - Request Arguments: None
 - Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
-{'1' : "Science",
-'2' : "Art",
-'3' : "Geography",
-'4' : "History",
-'5' : "Entertainment",
-'6' : "Sports"}
+{
+  "categories": {
+    "1": "Science", 
+    "2": "Art", 
+    "3": "Geography", 
+    "4": "History", 
+    "5": "Entertainment", 
+    "6": "Sports"
+  }, 
+  "success": true
+}
+
+GET '/questions' Fetches a paginated dictionary of question of all available categories.
+{
+    {
+  "categories": {
+    "1": "Science", 
+    "2": "Art", 
+    "3": "Geography", 
+    "4": "History", 
+    "5": "Entertainment", 
+    "6": "Sports"
+  }, 
+  "currentCategory": null,
+    {
+      "answer": "Escher", 
+      "category": 2, 
+      "difficulty": 1, 
+      "id": 16, 
+      "question": "Which Dutch graphic artist\u2013initials M C was a creator of optical illusions?"
+    }
+  ], 
+  "success": true, 
+  "totalQuestions": 18
+}
+
+POST /questions/add Add a new questions to the repository of available questions.
+# Request body: {question:string, answer:string, difficulty:int, category:string}
+
+Example response:
+{
+  "created": 30, 
+  "success": true, 
+  "total_questions": 22
+}
+DELETE Delete an existing question from the repository of available questions.
+# Request arguments: question_id:int
+Example response:
+{
+  "deleted": "21", 
+  "success": true
+}
+
+POST /questions/search Fetches all questions where a substring matches the search term (not case-sensitive)
+ Request body: {searchTerm:string}
+ Example response:
+{
+  "currentCategory": "Entertainment", 
+  "questions": [
+    {
+      "answer": "Maya Angelou", 
+      "category": 4, 
+      "difficulty": 2, 
+      "id": 5, 
+      "question": "Whose autobiography is entitled 'I Know Why the Caged Bird Sings'?"
+    }, 
+  ], 
+  "success": true, 
+  "total_questions": 22
+}
+
+
+GET '/categories'
+- Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
+- Request Arguments: None
+- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
+{
+   '1' : "Science",
+   '2' : "Art",
+   '3' : "Geography",
+   '4' : "History",
+   '5' : "Entertainment",
+   '6' : "Sports"
+}
+
+GET /categories/<int:category_id>/questions Fetches a dictionary of questions for the specified category
+
+Request argument: category_id:int
+Example response:
+{
+   current_category: 2,
+   questions: [
+{
+   answer: "Escher",
+   category: 2,
+   difficulty: 1,
+   id: 16,
+   question: "Which Dutch graphic artist–initials M C was a creator of optical illusions?"
+},
+{
+   answer: "Mona Lisa",
+   category: 2,
+   difficulty: 3,
+   id: 17,
+   question: "La Giaconda is better known as what?"
+}
+],
+   response: true,
+   total_questions: 2
+}
+
 
 ```
 

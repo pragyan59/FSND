@@ -1,10 +1,15 @@
 import os
+from os import environ as env
 from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+
+load_dotenv()
 import json
 
 database_name = "trivia"
-database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+# database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+database_path = 'postgresql+psycopg2://{}:{}@{}/{}'.format(env['DB_USER'], env['DB_PASSWORD'], env['DB_HOST'], env['DB_NAME'])
 
 db = SQLAlchemy()
 
